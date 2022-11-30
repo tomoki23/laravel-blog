@@ -99,6 +99,10 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $detail = Article::find($id);
+
+        $detail->delete();
+
+        return to_route('articles.index');
     }
 }
