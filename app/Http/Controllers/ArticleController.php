@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Article;
 
 class ArticleController extends Controller
 {
@@ -13,7 +14,10 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('articles.index');
+        $articles = Article::all();
+        // dd($article);
+
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -34,7 +38,12 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new Article();
+        $article->title = $request->title;
+        $article->body = $request->body;
+        $article->save();
+
+        return to_route('articles.index');
     }
 
     /**
