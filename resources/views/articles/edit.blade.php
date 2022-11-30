@@ -21,25 +21,26 @@
 
 <body>
   <h1>一覧ページ</h1>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>タイトル</th>
-        <th>本文</th>
-        <th>投稿日</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <form action="{{ route('articles.update') }}" method="post">
-          <td><input type="text" name="title" value="{{ $detail->title }}"></td>
-          <td><textarea name="body" cols="30" rows="10">{{ $detail->body }}</textarea></td>
-          <td>{{ $detail->created_at }}</td>
-        </form>
-      </tr>
-    </tbody>
-  </table>
-  <button type="submit">更新する</button>
+  <form action="{{ route('articles.update',[$detail->id]) }}" method="post">
+    @csrf
+    <table border="1">
+      <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>本文</th>
+          <th>投稿日</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td><input type="text" name="title" value="{{ $detail->title }}"/></td>
+            <td><textarea name="body" cols="30" rows="10">{{ $detail->body }}</textarea></td>
+            <td>{{ $detail->created_at }}</td>
+          </tr>
+        </tbody>
+      </table>
+    <button type="submit">更新する</button>
+  </form>
   <a href="{{ route('articles.index') }}">一覧ページ</a>
 </body>
 
