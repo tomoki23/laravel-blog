@@ -22,5 +22,6 @@
     <textarea name="body" id="body"></textarea>
     <button type="submit">投稿</button>
   </form>
+  <a href="{{ route('articles.index') }}">一覧ページ</a>
 </body>
 </html>
