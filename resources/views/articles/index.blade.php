@@ -31,6 +31,12 @@
         <td>{{ $article->title }}</td>
         <td>{{ $article->body }}</td>
         <td>{{ $article->created_at }}</td>
+        <td style="border:none;">
+          <a href="{{ route('articles.show',[$article->id]) }}">詳細</a>
+          {{-- <form action="{{ route('articles.delete') }}"> --}}
+            <button type="submit">削除</button>
+          {{-- </form> --}}
+        </td>
       </tr>
       @endforeach
     </tbody>
