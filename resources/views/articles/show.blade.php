@@ -37,7 +37,7 @@
       </tr>
     </tbody>
   </table>
-  <a href="#">更新する</a>
+  <a href="{{ route('articles.edit',[$detail->id]) }}">更新する</a>
   <a href="{{ route('articles.index') }}">一覧ページ</a>
 </body>
 
