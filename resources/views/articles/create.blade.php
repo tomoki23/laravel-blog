@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>登録画面</title>
+  <style>
+    input {
+      margin-bottom: 8px;
+    }
+  </style>
 </head>
 <body>
   <h1>投稿ページ</h1>
@@ -14,7 +19,7 @@
     <input type="text" name="title" id="title">
     <br>
     <label for="body">本文：</label>
-    <input type="text" name="body" id="body">
+    <textarea name="body" id="body"></textarea>
     <button type="submit">投稿</button>
   </form>
 </body>
