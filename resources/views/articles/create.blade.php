@@ -7,6 +7,15 @@
   <title>登録画面</title>
 </head>
 <body>
-  <p>登録画面です</p>
+  <h1>投稿ページ</h1>
+  <form action="{{ route('articles.store') }}" method="post">
+    @csrf
+    <label for="title">タイトル：</label>
+    <input type="text" name="title" id="title">
+    <br>
+    <label for="body">本文：</label>
+    <input type="text" name="body" id="body">
+    <button type="submit">投稿</button>
+  </form>
 </body>
 </html>
