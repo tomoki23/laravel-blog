@@ -37,9 +37,14 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'title' => ['required', 'max:5'],
+            'body' => ['required', 'max:1000'],
+        ]);
+
         $article = new Article();
-        $article->title = $request->title;
-        $article->body = $request->body;
+        $article->title = $validated['title'];
+        $article->body = $validated['body'];
         $article->save();
 
         return to_route('articles.index');
