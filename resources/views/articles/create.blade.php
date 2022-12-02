@@ -12,21 +12,23 @@
   </style>
 </head>
 <body>
+
   @if($errors->any())
     <ul>
-      @foreach($erros->all() as $error)
-        <li>{{ $error }}</li>
+      @foreach($errors->all() as $error)
+        <li>{{ $error}}</li>
       @endforeach
     </ul>
   @endif
+
   <h1>投稿ページ</h1>
   <form action="{{ route('articles.store') }}" method="post">
     @csrf
     <label for="title">タイトル：</label>
-    <input type="text" name="title" id="title">
+    <input type="text" name="title" id="title" value="{{ old('title') }}">
     <br>
     <label for="body">本文：</label>
-    <textarea name="body" id="body"></textarea>
+    <textarea name="body" id="body">{{ old('body') }}</textarea>
     <button type="submit">投稿</button>
   </form>
   <a href="{{ route('articles.index') }}">一覧ページ</a>
