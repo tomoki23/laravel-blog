@@ -39,7 +39,7 @@ class ArticleController extends Controller
     {
         $validated = $request->validate([
             'title' => ['required', 'max:5'],
-            'body' => ['required', 'max:1000'],
+            'body' => ['required', 'max:255'],
         ]);
 
         $article = new Article();

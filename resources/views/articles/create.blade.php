@@ -12,6 +12,13 @@
   </style>
 </head>
 <body>
+  @if($errors->any())
+    <ul>
+      @foreach($erros->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  @endif
   <h1>投稿ページ</h1>
   <form action="{{ route('articles.store') }}" method="post">
     @csrf
