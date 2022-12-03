@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class ArticleController extends Controller
 {
@@ -12,11 +14,11 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): view
     {
         $articles = Article::all();
 
-        return view('articles.index', compact('articles'));
+        return ((view('articles.index', compact('articles'))));
     }
 
     /**
@@ -24,7 +26,7 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): view
     {
         return view('articles.create');
     }
@@ -35,7 +37,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'title' => ['required', 'max:5'],
@@ -47,7 +49,7 @@ class ArticleController extends Controller
         $article->body = $validated['body'];
         $article->save();
 
-        return to_route('articles.index');
+        return (to_route('articles.index'));
     }
 
     /**
@@ -56,7 +58,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): view
     {
         $detail = Article::find($id);
 
@@ -69,7 +71,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id): view
     {
         $detail = Article::find($id);
 
@@ -83,7 +85,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): RedirectResponse
     {
         $detail = Article::find($id);
 
@@ -101,7 +103,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $detail = Article::find($id);
 
