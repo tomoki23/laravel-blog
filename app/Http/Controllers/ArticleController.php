@@ -14,11 +14,11 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): view
+    public function index(): View
     {
         $articles = Article::all();
 
-        return ((view('articles.index', compact('articles'))));
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(): view
+    public function create(): View
     {
         return view('articles.create');
     }
@@ -58,7 +58,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id): view
+    public function show($id): View
     {
         $detail = Article::find($id);
 
@@ -71,7 +71,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id): view
+    public function edit($id): View
     {
         $detail = Article::find($id);
 
