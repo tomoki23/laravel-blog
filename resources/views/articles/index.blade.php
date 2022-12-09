@@ -17,11 +17,13 @@
 </head>
 <body>
   <h1>一覧ページ</h1>
+  {{-- 検索フォーム --}}
   <form action="#" method="get" style="margin-bottom: 16px">
     <label for="search">検索：</label>
     <input type="text" name="search" id="search"/>
     <button type="submit">検索</button>
   </form>
+
   <table border="1">
     <thead>
       <tr>
