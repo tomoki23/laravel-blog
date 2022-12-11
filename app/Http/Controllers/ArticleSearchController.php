@@ -11,6 +11,8 @@ class ArticleSearchController extends Controller
     {
         $searchWord = $request->input('searhWord', '');
 
+        dd($request);
+
         $searchArticles = Article::where('id', '=', '3')
             // ->where('body', 'LIKE', 'テスト')
             ->get()

@@ -8,6 +8,7 @@
 </head>
 <body>
   <h1>検索結果</h1>
+  @if($searchArticles)
   <table border="1">
     <thead>
       <tr>
@@ -34,5 +35,9 @@
       @endforeach
     </tbody>
   </table>
+  @endif
+  @if(!$searchArticles)
+    <p>検索条件と一致する結果がありません。</p>
+  @endif
 </body>
 </html>
