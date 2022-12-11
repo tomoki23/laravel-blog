@@ -17,7 +17,6 @@ class ArticleSearchController extends Controller
             ->get()
             ->all();
 
-        // dd($searchArticles);
         return view('search.index', compact('searchArticles'));
     }
 }
