@@ -11,11 +11,9 @@ class ArticleSearchController extends Controller
     {
         $searchWord = $request->input('search');
 
-
         $searchArticles = Article::where('title', 'LIKE', "%{$searchWord}%")
             ->orWhere('body', 'LIKE', "%{$searchWord}%")
-            ->get()
-            ->all();
+            ->get();
 
         return view('search.index', compact('searchArticles'));
     }
