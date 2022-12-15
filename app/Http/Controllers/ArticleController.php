@@ -14,11 +14,24 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $articles = Article::all();
 
-        return view('articles.index', compact('articles'));
+        $searchWord = $request->input('search');
+
+        $query = Article::query();
+
+        if ($searchWord) {
+            $query->where('title', 'LIKE', "%{$searchWord}%")
+                ->orWhere('body', 'LIKE', "%{$searchWord}%");
+        }
+
+        $articles = $query->get();
+
+        return view('articles.index')->with([
+            'articles' => $articles,
+            'search' => $searchWord,
+        ]);
     }
 
     /**
