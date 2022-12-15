@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticlePostRequest;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use Illuminate\Http\RedirectResponse;
@@ -50,16 +51,12 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): RedirectResponse
+    public function store(ArticlePostRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'title' => ['required', 'max:5'],
-            'body' => ['required', 'max:255'],
-        ]);
 
         $article = new Article();
-        $article->title = $validated['title'];
-        $article->body = $validated['body'];
+        $article->title = $request['title'];
+        $article->body = $request['body'];
         $article->save();
 
         return (to_route('articles.index'));
